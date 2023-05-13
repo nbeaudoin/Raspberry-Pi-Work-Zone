@@ -1,8 +1,8 @@
-from picamera import PiCamera
-import time
+from picamera2 import Picamera2
+from libcamera import controls
 
-camera = PiCamera()
-time.sleep(3)
+picam2 = Picamera2()
 
-camera.capture("test_image.jpg")
-print("Done.")
+picam2.start(show_preview=True)
+
+picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
